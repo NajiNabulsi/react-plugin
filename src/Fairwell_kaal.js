@@ -8,17 +8,31 @@ import { useGLTF } from '@react-three/drei'
 export default function Model({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/Fairwell_kaal.gltf')
-//  const meshColor = 0xff0000
+  const materialSettings = {
+    color : 0xff0000,
+    roughness : 1,
+    metalness : 1
+  }
   return (
-    <group ref={group} {...props} dispose={null} >
-      <mesh   geometry={nodes.BezierCurve006_BezierCurve002.geometry} material={nodes.BezierCurve006_BezierCurve002.material} rotation={[-1.57, 0, -1.57]}   />
-      <mesh  geometry={nodes.polySurface1.geometry} material={nodes.polySurface1.material} rotation={[-1.57, 0, -1.57]} />
-      <mesh   geometry={nodes.polySurface2.geometry} material={materials['initialShadingGroup.002']} rotation={[-1.57, 0, -1.57]} />
-      <mesh  geometry={nodes.polySurface3.geometry} material={nodes.polySurface3.material} rotation={[-1.57, 0, -1.57]} />
-      <mesh  geometry={nodes.polySurface4.geometry} material={nodes.polySurface4.material} rotation={[-1.57, 0, -1.57]} />
-      <mesh  geometry={nodes.polySurface5.geometry} material={nodes.polySurface5.material} rotation={[-1.57, 0, -1.57]} />
-      <mesh  geometry={nodes.polySurface6.geometry} material={nodes.polySurface6.material} rotation={[-1.57, 0, -1.57]} >
-      <meshStandardMaterial color={"red"} roughness={1} metalness ={1} />
+    <group ref={group} {...props} dispose={null} castShadow receiveShadow>
+      <mesh castShadow receiveShadow  geometry={nodes.BezierCurve006_BezierCurve002.geometry} material={nodes.BezierCurve006_BezierCurve002.material} rotation={[-1.57, 0, -1.57]}   />
+      <mesh castShadow receiveShadow  geometry={nodes.polySurface1.geometry} material={nodes.polySurface1.material} rotation={[-1.57, 0, -1.57]} >
+      <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
+      </mesh>
+      <mesh castShadow receiveShadow   geometry={nodes.polySurface2.geometry} material={materials['initialShadingGroup.002']} rotation={[-1.57, 0, -1.57]} >
+      <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
+      </mesh>
+      <mesh castShadow receiveShadow  geometry={nodes.polySurface3.geometry} material={nodes.polySurface3.material} rotation={[-1.57, 0, -1.57]} >
+        <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
+      </mesh>
+      <mesh castShadow receiveShadow  geometry={nodes.polySurface4.geometry} material={nodes.polySurface4.material} rotation={[-1.57, 0, -1.57]} >
+        <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
+      </mesh>
+      <mesh castShadow receiveShadow  geometry={nodes.polySurface5.geometry} material={nodes.polySurface5.material} rotation={[-1.57, 0, -1.57]} >
+        <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
+      </mesh>
+      <mesh castShadow receiveShadow  geometry={nodes.polySurface6.geometry} material={nodes.polySurface6.material} rotation={[-1.57, 0, -1.57]} >
+      <meshStandardMaterial color={materialSettings.color} roughness={materialSettings.roughness} metalness ={materialSettings.metalness}  />
       </mesh>
     </group>
   )
